@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html ng-app="report">
+<head>
+    <meta charset="utf-8" />
+    <title>IOL Report Configure</title>
+    <link rel="stylesheet" href="./assets/css/angular-material.css" />
+    <script src="./assets/libs/angular.min.js"></script>
+    <script src="./assets/libs/angular-animate.js"></script>
+    <script src="./assets/libs/angular-aria.min.js"></script>
+    <script src="./assets/libs/angular-material.min.js"></script>
+    <script src="./app/app.module.js"></script>
+    <script src="./app/components/report/reportController.js"></script>
+</head>
+<body layout="column">
+    <div class="toolbarReportBasicUsage">
+        <md-toolbar class="md-hue-2">
+            <div class="md-toolbar-tools">
+                <md-button class="md-icon-button" aria-label="Settings" ng-disabled="true">
+                    <md-icon md-svg-icon="./assets/img/icons/baseline-menu-24px.svg"></md-icon>
+                </md-button>
+                <h2 flex md-truncate>IOL Report Configure Starter</h2>
+                <md-button class="md-icon-button" aria-label="Favorite">
+                    <md-icon md-svg-icon="./assets/img/icons/baseline-favorite-24px.svg" class="favorite-icon"></md-icon>
+                </md-button>
+
+                <md-button class="md-icon-button" aria-label="More">
+                    <md-icon md-svg-icon="./assets/img/icons/baseline-more_vert-24px.svg"></md-icon>
+                </md-button>
+            </div>
+
+        </md-toolbar>
+    </div>
+
+    <div class="container" layout="row" flex>
+        <div layout="column">
+            <md-sidenav md-is-locked-open="true">
+                <md-list>
+                    <md-list-item>
+                        <md-button class="md-raised md-warn">
+                            New
+                        </md-button>
+                    </md-list-item>
+                    <md-list-item>
+                        <md-button class="md-fab md-primary md-hue-2" aria-label="Profile">
+                            <md-icon md-svg-src="/Layouts/assets/img/icons/baseline-calendar_today-24px.svg"></md-icon>
+                        </md-button>
+                    </md-list-item>
+                </md-list>
+            </md-sidenav>
+        </div>
+        <div ng-controller="reportController" ng-cloak layout="column" flex>
+            <md-toolbar class="md-hue-3">
+                <div class="md-toolbar-tools">
+                    <span>Reporting Configure</span>
+                </div>
+            </md-toolbar>
+
+            <md-content>
+                <md-list flex>
+                    <md-subheader class="md-no-sticky">Configure Records</md-subheader>
+                    <md-list-item class="md-3-line" ng-repeat="item in reports" ng-click="null">
+                        <img ng-src="{{item.type}}?{{$index}}" class="md-avatar" alt="{{item.createdby}}" />
+                        <div class="md-list-item-text" layout="column">
+                            <h3>{{ item.createdby }}</h3>
+                            <h4>{{ item.title }}</h4>
+                            <p>{{ item.notes }}</p>
+                        </div>
+                    </md-list-item>
+                </md-list>
+            </md-content>
+        </div>
+    </div>
+
+    <style>
+        .toolbarReportBasicUsage md-toolbar .md-button.md-icon-button .favorite-icon {
+            fill: #ff0000;
+        }
+
+        .toolbarReportBasicUsage md-toolbar .md-toolbar-tools {
+            background-color: #39bb73;
+        }
+
+        .toolbarReportBasicUsage md-toolbar md-toolbar-filler #filler-icon {
+            fill: #00ff21;
+        }
+
+        .listdemoBasicUsage md-divider {
+            margin-top: 10px;
+            margin-bottom: 0;
+        }
+    </style>
+</body>
+</html>
